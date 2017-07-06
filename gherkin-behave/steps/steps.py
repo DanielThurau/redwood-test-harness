@@ -11,7 +11,7 @@ use_step_matcher("parse")
 # each step Dump what it did into whatever 
 # file is denoted in {file}
 DUMP = False;
-file = "test.txt"
+file = ".output"
 # ----------------------------------------
 
 # Gloabal default Parameters for state of experiemnt
@@ -42,6 +42,10 @@ session_length = 0
 record_time = {}
 # CSV target
 target = open(file, 'w')
+
+# Target Prefix
+target_prefix = "/home/dthurau/LEEPS/redwood-test-harness/data/Scenarios/"
+
 
 #!--------------------------------------------------------------------->
 # Below this line is production code and does not need further modifications
@@ -110,7 +114,7 @@ def step_impl(context):
 	global scenario_index
 	scenario_index = scenario_index + 1;
 	# Create direvtory
-	dir_create = "mkdir Scenario" + str(scenario_index)
+	dir_create = "mkdir " + target_prefix + "Scenario" + str(scenario_index)
 	os.system(dir_create)
 
 	if(scenario_index > 1):
@@ -176,7 +180,7 @@ def step_impl(context, value, time):
 		target.write("---------------Adding values to jump.csv---------------\n")
 
 	global scenario_index
-	jump_name = "Scenario" + str(scenario_index) + "/T"+ str(scenario_index) + "_jump.csv"
+	jump_name = target_prefix + "Scenario" + str(scenario_index) + "/T"+ str(scenario_index) + "_jump.csv"
 	jump_targ = open(jump_name, 'w')
 
 	# initial header for the file
@@ -192,7 +196,7 @@ def step_impl(context, value, time):
 
 	# global scenario_index
 
-	inv_name = "Scenario" + str(scenario_index) + "/T"+ str(scenario_index) + "_investors.csv"
+	inv_name = target_prefix + "Scenario" + str(scenario_index) + "/T"+ str(scenario_index) + "_investors.csv"
 	inv_targ = open(inv_name, 'w')
 
 	# initial header for the file
@@ -222,7 +226,7 @@ def step_impl(context, t, d):
 		target.write("---------------Adding values to investor.csv---------------\n")
 
 	global scenario_index
-	inv_name = "Scenario" + str(scenario_index) + "/T"+ str(scenario_index) + "_investors.csv"
+	inv_name = target_prefix +  "Scenario" + str(scenario_index) + "/T"+ str(scenario_index) + "_investors.csv"
 	inv_targ = open(inv_name, 'w')
 
 	direction = -1
@@ -353,7 +357,7 @@ def step_impl(context, t, p, k, v):
 	# subj_i = subj_index(p)
 
 
-	target_name = "Scenario" + str(scenario_index) + "/T" + str(scenario_index) + "_P" + str(p) + "_input.csv"
+	target_name = target_prefix + "Scenario" + str(scenario_index) + "/T" + str(scenario_index) + "_P" + str(p) + "_input.csv"
 	user_target = open(target_name, 'a')
 
 	if( k == "bid"):
@@ -362,7 +366,7 @@ def step_impl(context, t, p, k, v):
 				subjects_list[int(p)][str(k)] = v
 	if( k == "offer" ):
 		for i in range(0, subjects_num):
-			target_name = "Scenario" + str(scenario_index) + "/T" + str(scenario_index) + "_P" + str(i) + "_input.csv"
+			target_name = target_prefix + "Scenario" + str(scenario_index) + "/T" + str(scenario_index) + "_P" + str(i) + "_input.csv"
 			user_target = open(target_name, 'a')
 			if(int(i) == int(p)):
 

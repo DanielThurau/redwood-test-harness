@@ -1,9 +1,9 @@
 import os
 import sys
-from subprocess import call
 
-
+# Driver Phase 1 :
+#	Copy Specified Gherkin text to Gherkin Module
+#	Start Gherkin
 file = sys.argv[1];
 osStatement = "cp " + file + " gherkin-behave/"
-#call(osStatement);
-print(osStatement);
+os.system(osStatement);
