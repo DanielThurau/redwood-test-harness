@@ -1,0 +1,364 @@
+---------------Reading Global Parameters----------------
+V0 : 100
+delta_eps : 10
+trigger_time : 5000
+delta_slow : 500
+delta_fast : 250
+----------------Reading Number of Users----------------
+number of participants: 4
+----------Reading in User Default Parameters----------
+status : out
+offer0 : 101
+speed : slow
+bid0 : 99
+----------------Updating Session Length----------------
+Sessions lasts: 10 seconds
+----------------Creating Participant----------------
+Subject:  0
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+----------------Creating Participant----------------
+Subject:  1
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+----------------Creating Participant----------------
+Subject:  2
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+----------------Creating Participant----------------
+Subject:  3
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+-------------------Updating Attribute-------------------
+Subject:  1
+	Status: make
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+-------------------Updating Attribute-------------------
+Subject:  1
+	Status: make
+	Speed:  fast
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+-------------------Updating Attribute-------------------
+Subject:  2
+	Status: snipe
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+---------------Adding values to jump.csv---------------
+time1 : trigger_time+delta_slow-delta_eps
+time2 : trigger_time+delta_slow+delta_eps
+----------------Updating Record Times----------------
+time1 : 5490
+time2 : 5510
+---------------Reading Global Parameters----------------
+V0 : 100
+delta_eps : 10
+trigger_time : 5000
+delta_slow : 500
+delta_fast : 250
+----------------Reading Number of Users----------------
+number of participants: 4
+----------Reading in User Default Parameters----------
+status : out
+offer0 : 101
+speed : slow
+bid0 : 99
+----------------Updating Session Length----------------
+Sessions lasts: 10 seconds
+---------------Resetting Participants---------------
+Subject:  0
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+---------------Resetting Participants---------------
+Subject:  1
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+---------------Resetting Participants---------------
+Subject:  2
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+---------------Resetting Participants---------------
+Subject:  3
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+----------------Creating Participant----------------
+Subject:  0
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+----------------Creating Participant----------------
+Subject:  1
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+----------------Creating Participant----------------
+Subject:  2
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+----------------Creating Participant----------------
+Subject:  3
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+-------------------Updating Attribute-------------------
+Subject:  2
+	Status: make
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+-------------------Updating Attribute-------------------
+Subject:  2
+	Status: make
+	Speed:  fast
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+-------------------Updating Attribute-------------------
+Subject:  3
+	Status: snipe
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+---------------Adding values to jump.csv---------------
+time1 : trigger_time+delta_slow-delta_eps
+time2 : trigger_time+delta_slow+delta_eps
+----------------Updating Record Times----------------
+time1 : 5490
+time2 : 5510
+---------------Reading Global Parameters----------------
+V0 : 100
+delta_eps : 10
+trigger_time : 5000
+delta_slow : 500
+delta_fast : 250
+----------------Reading Number of Users----------------
+number of participants: 4
+----------Reading in User Default Parameters----------
+status : out
+offer0 : 101
+speed : slow
+bid0 : 99
+----------------Updating Session Length----------------
+Sessions lasts: 10 seconds
+---------------Resetting Participants---------------
+Subject:  0
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+---------------Resetting Participants---------------
+Subject:  1
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+---------------Resetting Participants---------------
+Subject:  2
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+---------------Resetting Participants---------------
+Subject:  3
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+----------------Creating Participant----------------
+Subject:  0
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+----------------Creating Participant----------------
+Subject:  1
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+----------------Creating Participant----------------
+Subject:  2
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+----------------Creating Participant----------------
+Subject:  3
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+-------------------Updating Attribute-------------------
+Subject:  3
+	Status: make
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+-------------------Updating Attribute-------------------
+Subject:  3
+	Status: make
+	Speed:  fast
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+-------------------Updating Attribute-------------------
+Subject:  0
+	Status: snipe
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+---------------Adding values to jump.csv---------------
+time1 : trigger_time+delta_slow-delta_eps
+time2 : trigger_time+delta_slow+delta_eps
+----------------Updating Record Times----------------
+time1 : 5490
+time2 : 5510
+---------------Reading Global Parameters----------------
+V0 : 100
+delta_eps : 10
+trigger_time : 5000
+delta_slow : 500
+delta_fast : 250
+----------------Reading Number of Users----------------
+number of participants: 4
+----------Reading in User Default Parameters----------
+status : out
+offer0 : 101
+speed : slow
+bid0 : 99
+----------------Updating Session Length----------------
+Sessions lasts: 10 seconds
+---------------Resetting Participants---------------
+Subject:  0
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+---------------Resetting Participants---------------
+Subject:  1
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+---------------Resetting Participants---------------
+Subject:  2
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+---------------Resetting Participants---------------
+Subject:  3
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+----------------Creating Participant----------------
+Subject:  0
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+----------------Creating Participant----------------
+Subject:  1
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+----------------Creating Participant----------------
+Subject:  2
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+----------------Creating Participant----------------
+Subject:  3
+	Status: out
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+-------------------Updating Attribute-------------------
+Subject:  0
+	Status: make
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+-------------------Updating Attribute-------------------
+Subject:  0
+	Status: make
+	Speed:  fast
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+-------------------Updating Attribute-------------------
+Subject:  1
+	Status: snipe
+	Speed:  slow
+	Bid0:   99
+	Offer0:	101
+	Type:	null
+---------------Adding values to jump.csv---------------
+time1 : trigger_time+delta_slow-delta_eps
+time2 : trigger_time+delta_slow+delta_eps
+----------------Updating Record Times----------------
+time1 : 5490
+time2 : 5510

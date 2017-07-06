@@ -139,31 +139,34 @@ def step_impl(context):
 
 
 # Takes modified attributes of participants
-@given('participant <{p}> has {key} updated to {value}')
+@given('participant {p} has {key} updated to {value}')
 def step_impl(context, p, key, value):
 	
-	# Get index of subject list 
-	subj_i = subj_index(p)
+	# # Get index of subject list 
+	# subj_i = subj_index(p)
 
-	# if dne add it
-	if(subj_i == -1):
-		global subjects_num
-		subj_i = random.randint(0, subjects_num-1)
-		while subjects_list[subj_i] == "null":
-			subj_i = random.randint(0, subjects_num-1)
-		subjects_list[subj_i]['type'] = p;
-		# adds to mirror list to make searching concievable
-		participant_type[subj_i] = p;
-		if(DUMP):
-			target.write("----------------------Updating Type----------------------\n")
-			dump_subject(subjects_list[subj_i])
+	# # if dne add it
+	# if(subj_i == -1):
+	# 	global subjects_num
+	# 	subj_i = random.randint(0, subjects_num-1)
+	# 	while subjects_list[subj_i] == "null":
+	# 		subj_i = random.randint(0, subjects_num-1)
+	# 	subjects_list[subj_i]['type'] = p;
+	# 	# adds to mirror list to make searching concievable
+	# 	participant_type[subj_i] = p;
+	# 	if(DUMP):
+	# 		target.write("----------------------Updating Type----------------------\n")
+	# 		dump_subject(subjects_list[subj_i])
 
 	# update the value
-	subjects_list[subj_i][key] = value
+	subjects_list[int(p)][key] = value
 
 	if(DUMP):
 		target.write("-------------------Updating Attribute-------------------\n")
-		dump_subject(subjects_list[subj_i])
+		dump_subject(subjects_list[int(p)])
+
+
+	pass
 
 # Takes intital V jump and creates the jump.csv for the experiemnt
 @when('V jumps to {value} at {time}')
@@ -178,12 +181,24 @@ def step_impl(context, value, time):
 
 	# initial header for the file
 	jump_targ.write("jumpTime,jumpSizes\n")
+	if(time != "-1"):
 	# V0
-	jump_targ.write("0," + global_default_params["V0"] +  "\n")
-	# trigger time
-	jump_targ.write(global_default_params[time] + ',' + value + "\n")
-
+		jump_targ.write("0," + global_default_params["V0"] +  "\n")
+		# trigger time
+		jump_targ.write(global_default_params[time] + ',' + value + "\n")
+	else:
+		jump_targ.write("300000,-1\n")
 	jump_targ.close();
+
+	# global scenario_index
+
+	inv_name = "Scenario" + str(scenario_index) + "/T"+ str(scenario_index) + "_investors.csv"
+	inv_targ = open(inv_name, 'w')
+
+	# initial header for the file
+	inv_targ.write("investorTimes,investorDirections\n")
+
+	inv_targ.close()
 
 
 
@@ -209,9 +224,6 @@ def step_impl(context, t, d):
 	global scenario_index
 	inv_name = "Scenario" + str(scenario_index) + "/T"+ str(scenario_index) + "_investors.csv"
 	inv_targ = open(inv_name, 'w')
-
-	# initial header for the file
-	inv_targ.write("investorTimes,investorDirections\n")
 
 	direction = -1
 
@@ -335,27 +347,41 @@ def step_impl(context, t, v):
 	pass
 
 
-@then('at {t} participant <{p}> has {k} <{v}>')
+@then('at {t} participant {p} has {k} {v}')
 def step_impl(context, t, p, k, v):
+	global subjects_list
+	# subj_i = subj_index(p)
 
-	subj_i = subj_index(p)
 
-
-	target_name = "Scenario" + str(scenario_index) + "/T" + str(scenario_index) + "_P" + str(subj_i) + "_input.csv"
+	target_name = "Scenario" + str(scenario_index) + "/T" + str(scenario_index) + "_P" + str(p) + "_input.csv"
 	user_target = open(target_name, 'a')
 
 	if( k == "bid"):
-		bid = subjects_list[subj_i]["bid0"]
-		offer = subjects_list[subj_i]["offer0"]
-		spread = int(offer) - int(bid)
-		user_target.write(str(record_time[t]) + ",SPREAD," + str(spread) + "\n")
+		for i in range(0, subjects_num):
+			if(int(i) == int(p)):
+				subjects_list[int(p)][str(k)] = v
+	if( k == "offer" ):
+		for i in range(0, subjects_num):
+			target_name = "Scenario" + str(scenario_index) + "/T" + str(scenario_index) + "_P" + str(i) + "_input.csv"
+			user_target = open(target_name, 'a')
+			if(int(i) == int(p)):
+
+				subjects_list[int(p)][str(k)] = v
+				
+				spread = int(v) - int(subjects_list[int(p)]["bid0"])
+				user_target.write(str(record_time[t]) + ",SPREAD," + str(spread) + "\n")				
+			else:
+				user_target.write(str(record_time[t]) + ",OUT\n")				
 
 
-
-@then('at {t} participants besides <{p}> have {k} {v}')
+@then('at {t} participants besides {p} have {k} {v}')
 def step_impl(context, t, p, k, v):
 	pass
 
 @then('at {t} all participants have {k} {v}')
 def step_impl(context, t, k, v):
 	pass
+
+# @then('at {t} participant have {k} {v}')
+# def step_impl(context, t, k, v):
+# 	pass

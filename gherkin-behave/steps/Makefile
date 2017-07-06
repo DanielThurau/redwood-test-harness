@@ -1,2 +1,2 @@
 all:
-	 ~/.local/bin/behave --no-capture
+	 behave --no-capture
