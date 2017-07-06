@@ -10,7 +10,7 @@ use_step_matcher("parse")
 # Changin this value to 'True' will have 
 # each step Dump what it did into whatever 
 # file is denoted in {file}
-DUMP = False;
+DUMP = True;
 file = ".output"
 # ----------------------------------------
 
@@ -42,9 +42,8 @@ session_length = 0
 record_time = {}
 # CSV target
 target = open(file, 'w')
-
-# Target Prefix
-target_prefix = "/home/dthurau/LEEPS/redwood-test-harness/data/Scenarios/"
+# Scenario prefix
+target_prefix = "/home/dthurau/LEEPS/redwood-test-harness/data/scenarios/"
 
 
 #!--------------------------------------------------------------------->
@@ -226,7 +225,7 @@ def step_impl(context, t, d):
 		target.write("---------------Adding values to investor.csv---------------\n")
 
 	global scenario_index
-	inv_name = target_prefix +  "Scenario" + str(scenario_index) + "/T"+ str(scenario_index) + "_investors.csv"
+	inv_name = target_prefix + "Scenario" + str(scenario_index) + "/T"+ str(scenario_index) + "_investors.csv"
 	inv_targ = open(inv_name, 'w')
 
 	direction = -1
