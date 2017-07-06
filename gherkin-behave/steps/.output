@@ -1,0 +1,8 @@
+time1 : trigger_time+delta_slow-delta_eps
+time2 : trigger_time+delta_slow+delta_eps
+time1 : trigger_time+delta_slow-delta_eps
+time2 : trigger_time+delta_slow+delta_eps
+time1 : trigger_time+delta_slow-delta_eps
+time2 : trigger_time+delta_slow+delta_eps
+time1 : trigger_time+delta_slow-delta_eps
+time2 : trigger_time+delta_slow+delta_eps
