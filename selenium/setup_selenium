@@ -1,0 +1,21 @@
+#!/bin/bash
+# set up selenium env
+
+#----------------------------------------
+# Check that python exists
+if command -v python2.7 > /dev/null 2>&1; then
+    echo true
+else
+    echo Python 2.7 not installed
+    exit
+fi
+
+wget https://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip 
+
+unzip chromedriver_linux64.zip
+
+rm chromedriver_linux64.zip*
+
+mv chromedriver /usr/bin
+
+rm chromedriver 

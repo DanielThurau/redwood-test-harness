@@ -1,0 +1,3 @@
+#!/bin/bash
+
+python selenium_steps.py HFT-CDA /home/daniel/Documents/Programming/LEEPS/Code/2.2/redwood/static/redwood-high-frequency-trading-remote/manifest.json /home/daniel/Documents/Programming/LEEPS/Code/2.2/redwood/static/experiments/redwood-high-frequency-trading-remote/config/test_config.csv 10
