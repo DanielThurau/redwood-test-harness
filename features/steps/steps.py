@@ -180,7 +180,7 @@ def step_impl(context, value, time):
 
 	global scenario_index
 	jump_name = target_prefix + "Scenario" + str(scenario_index) + "/T"+ str(scenario_index) + "_jump.csv"
-	jump_targ = open(jump_name, 'w')
+	jump_targ = open(jump_name, 'w+')
 
 	# initial header for the file
 	jump_targ.write("jumpTime,jumpSizes\n")
