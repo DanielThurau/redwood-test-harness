@@ -30,14 +30,13 @@ Feature: value jump
       and session runs to completion
     Then at time1 system is in initial state except V is 110
       and at time2 participant <maker> has profit <profit>
-      and at time2 participant <maker> has bid <bid>
-      and at time2 participant <maker> has offer <offer>
+      and at time2 participant <maker> has spread <spread>
       and at time2 participants besides <maker> have profit 0
     
     Examples:
-      | maker | bid | offer | profit | sniper |
-      | 1     | 109 | 111   | 0      | 2      |
-      | 2     | 109 | 111   | 0      | 3      |
-      | 3     | 109 | 111   | 0      | 4      |
-      | 4     | 109 | 111   | 0      | 1      |
+      | maker | spread| profit | sniper |
+      | 1     | 2     | 0      | 2      |
+      | 2     | 2     | 0      | 3      |
+      | 3     | 2     | 0      | 4      |
+      | 4     | 2     | 0      | 1      |
 
