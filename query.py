@@ -1,6 +1,13 @@
 import sys
+import csv
 
-query_sets = [];
+
+def csvToArray():
+	datafile = open('a.csv', 'r')
+	datareader = csv.reader(datafile,delimiter=';')
+	data = []
+	for row in data reader:
+	    data.append(row) 
 
 
 def createInd(line):
@@ -10,14 +17,26 @@ def createInd(line):
 	return temp;
 
 
+def readConfig(file):
+	query_sets = [];
+	query_file = open(file, 'r');
+	for line in query_file:
+		if line[0] == "#":
+			pass;
+		else:
+			query_sets.append(createInd(line));
+	return query_sets;
 
 
-query_file = open(sys.argv[1], 'r');
-for line in query_file:
-	if line[0] == "#":
-		pass;
-	else:
-		query_sets.append(createInd(line));
-		
+def executeQ(set):
 
-print query_sets;
+
+
+
+
+
+
+query_sets = readConfig(sys.argv[1]);
+print(query_sets);
+
+
