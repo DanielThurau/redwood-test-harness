@@ -32,6 +32,7 @@ def readConfig(file):
 def executeQ(querySet, master, labels):
 	rowID = -1;
 	count = 0;
+	goodQuery = True;
 	num = querySet[0].strip().split(':');
 	for row in master:
 		if row[0] == num[1]:
@@ -42,9 +43,8 @@ def executeQ(querySet, master, labels):
 		check = querySet[i].split(':');
 		index = labels[check[0]];
 		if master[rowID][index] != check[1]:
-			print ("YOU FUCKED UP");
-		else:
-			print("IT WORKS")		
+			goodQuery = False;
+	return goodQuery;
 
 
 
@@ -60,7 +60,10 @@ for i in outData[0]:
 	count = count + 1;
 
 
-
-executeQ(query_sets[1], outData, indexMap);
-
+for item in query_sets:
+	if not executeQ(item, outData, indexMap):
+		print("Bad");
+		exit(1);
+print("Good")
+exit(0);
 
