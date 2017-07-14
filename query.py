@@ -3,12 +3,12 @@ import csv
 
 
 def csvToArray():
-	datafile = open('a.csv', 'r')
+	datafile = open('out.csv', 'r')
 	datareader = csv.reader(datafile,delimiter=';')
 	data = []
-	for row in data reader:
+	for row in datareader:
 	    data.append(row) 
-
+	return data;
 
 def createInd(line):
 	temp = [];
@@ -28,7 +28,14 @@ def readConfig(file):
 	return query_sets;
 
 
-def executeQ(set):
+def executeQ(querySet, master):
+	rowID = -1;
+	count = 0;
+	for row in master:
+		if row[0] == querySet[0]:
+			rowID = count;
+		count = count + 1;
+	print rowID; 
 
 
 
@@ -37,6 +44,9 @@ def executeQ(set):
 
 
 query_sets = readConfig(sys.argv[1]);
-print(query_sets);
+outData = csvToArray();
+executeQ(query_sets[0], outData);
+# print(outData);
+# print(query_sets);
 
 
