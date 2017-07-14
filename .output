@@ -63,6 +63,11 @@ Subject:  2
 	Offer0:	101
 	Type:	null
 ---------------Adding values to jump.csv---------------
+time1 : trigger_time+delta_slow-delta_eps
+time2 : trigger_time+delta_slow+delta_eps
+----------------Updating Record Times----------------
+time1 : 5490
+time2 : 5510
 ---------------Reading Global Parameters----------------
 V0 : 100
 delta_eps : 10
@@ -156,6 +161,11 @@ Subject:  3
 	Offer0:	101
 	Type:	null
 ---------------Adding values to jump.csv---------------
+time1 : trigger_time+delta_slow-delta_eps
+time2 : trigger_time+delta_slow+delta_eps
+----------------Updating Record Times----------------
+time1 : 5490
+time2 : 5510
 ---------------Reading Global Parameters----------------
 V0 : 100
 delta_eps : 10
@@ -249,6 +259,11 @@ Subject:  0
 	Offer0:	101
 	Type:	null
 ---------------Adding values to jump.csv---------------
+time1 : trigger_time+delta_slow-delta_eps
+time2 : trigger_time+delta_slow+delta_eps
+----------------Updating Record Times----------------
+time1 : 5490
+time2 : 5510
 ---------------Reading Global Parameters----------------
 V0 : 100
 delta_eps : 10
@@ -342,3 +357,8 @@ Subject:  1
 	Offer0:	101
 	Type:	null
 ---------------Adding values to jump.csv---------------
+time1 : trigger_time+delta_slow-delta_eps
+time2 : trigger_time+delta_slow+delta_eps
+----------------Updating Record Times----------------
+time1 : 5490
+time2 : 5510
