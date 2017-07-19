@@ -10,7 +10,7 @@ use_step_matcher("parse")
 # Changin this value to 'True' will have 
 # each step Dump what it did into whatever 
 # file is denoted in {file}
-DUMP = True;
+DUMP = False;
 file = ".output"
 # ----------------------------------------
 
@@ -274,7 +274,7 @@ def subj_index(type_label):
 def parse_times(dictionary):
 	# super ugly, just dont look at it please
 	for key in dictionary:
-		target.write(key + " : " + dictionary[key] + "\n")
+		# target.write(key + " : " + dictionary[key] + "\n")
 		temp = dictionary[key]
 		replaced_var = ""
 		tempword = ""
@@ -383,7 +383,9 @@ def step_impl(context, t, p, k, v):
 
 @then('at {t} all participants have {k} {v}')
 def step_impl(context, t, k, v):
-	pass
+	# 1000000
+	target.write("------------\n");
+	pass;
 
 # @then('at {t} participant have {k} {v}')
 # def step_impl(context, t, k, v):
