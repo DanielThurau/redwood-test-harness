@@ -353,17 +353,23 @@ def step_impl(context, t, v):
 @then('at {t} participant {p} has {k} {v}')
 def step_impl(context, t, p, k, v):
 	global subjects_list
+	global record_time
 	# subj_i = subj_index(p)
+
+	time = record_time[t];
 
 
 	target_name = target_prefix + "Scenario" + str(scenario_index) + "/T" + str(scenario_index) + "_P" + str(p) + "_input.csv"
 	user_target = open(target_name, 'a')
 
+	target_name2 = target_prefix + "Scenario" + str(scenario_index) + "/query.config"
+	query_target = open(target_name2, 'a')
+
 	if( k == "bid"):
 		for i in range(0, subjects_num):
 			if(int(i) == int(p)):
 				subjects_list[int(p)][str(k)] = v
-	if( k == "offer" ):
+	elif( k == "offer" ):
 		for i in range(0, subjects_num):
 			target_name = target_prefix + "Scenario" + str(scenario_index) + "/T" + str(scenario_index) + "_P" + str(i) + "_input.csv"
 			user_target = open(target_name, 'a')
@@ -375,6 +381,13 @@ def step_impl(context, t, p, k, v):
 				user_target.write(str(record_time[t]) + ",SPREAD," + str(spread) + "\n")				
 			else:
 				user_target.write(str(record_time[t]) + ",OUT\n")				
+	elif( k == "profit"):
+		timestamp = str(int(time)*1000000);
+		query_target.write("timestamp:"+str(timestamp) + ",cumprofit_p" + p + ":" + v + "\n");
+	elif ( k == "spread"):
+		timestamp = str(int(time)*1000000);
+		query_target.write("timestamp:"+str(timestamp) + ",spread_p" + p + ":" + v  + "\n");
+
 
 
 @then('at {t} participants besides {p} have {k} {v}')
