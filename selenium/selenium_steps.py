@@ -14,13 +14,13 @@ config_loc = "/home/daniel/Documents/Programming/LEEPS/Code/2.2/redwood/static/e
 # manifest_loc = sys.argv[2]
 # config_loc = sys.argv[3]
 time_bloc =  sys.argv[4]
-ip = "http://172.31.43.27/admin"
+ip = "http://172.31.43.27"
 
 class local():
 	def setUp(self):
 		self.driver = webdriver.Chrome();
 		# Get Admin page and assert on what we received
-		self.driver.get("http://54.149.235.92/admin/")
+		self.driver.get(ip);
 		self.nav("Log in | Django site admin","404")
 
 	# Login into https://54.149.235.92/admin using 
@@ -50,7 +50,7 @@ class local():
 	# Define experiment (create new / access alresdy created one)
 	def enter_experiment(self):
 		# Navigate to the experiment tab
-		self.driver.get("http://54.149.235.92/admin/expecon/experiment/")
+		self.driver.get(ip + "/admin/expecon/experiment/")
 		self.nav("Select experiment to change | Django site admin", "Did not reach experiments")
 		exists = True
 
@@ -75,7 +75,7 @@ class local():
 			pass
 		if(exists):
 			# if DNE add the experiment
-	  		self.driver.get("http://54.149.235.92/admin/expecon/experiment/add/")
+	  		self.driver.get(ip + "/admin/expecon/experiment/add/")
 			self.nav("Add experiment | Django site admin", "Failed to add experiment")
 
 			manifest_upload = self.driver.find_element_by_name("file")
@@ -130,7 +130,7 @@ class local():
 
 
 		for i in range(1,5):
-			script = "window.open('http://54.149.235.92/session/"+session_number+"/subject/" + str(i) + "');"
+			script = "window.open('" + ip + "/session/"+session_number+"/subject/" + str(i) + "');"
 			self.driver.execute_script(script)
 			self.driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL + Keys.TAB)
 			# time.sleep(2)
@@ -144,7 +144,7 @@ class local():
 		
 
 
-		get_string = "http://54.149.235.92/session/"+session_number+"/admin"
+		get_string = ip + "/session/"+session_number+"/admin"
 		self.driver.get(get_string)
 
 		# self.nav("Testing HFT Admin", "Failed to reach admin")
