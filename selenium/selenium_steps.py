@@ -14,7 +14,7 @@ config_loc = "/home/daniel/Documents/Programming/LEEPS/Code/2.2/redwood/static/e
 # manifest_loc = sys.argv[2]
 # config_loc = sys.argv[3]
 time_bloc =  sys.argv[4]
-
+ip = "http://172.31.43.27/admin"
 
 class local():
 	def setUp(self):
