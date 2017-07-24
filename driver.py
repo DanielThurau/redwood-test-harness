@@ -18,3 +18,13 @@ os.system(osStatement);
 #	run python script on Scenarios dir
 osStatement = "python createConfig.py"
 os.system(osStatement);
+
+# Driver Phase 4:
+#       trigger selenium
+osStatement = "selenium/test_sel"
+os.system(osStatement);
+
+# Driveer Phase 5:
+#       trigger query 
+osStatement = "python query.py"
+os.system(osStatement);

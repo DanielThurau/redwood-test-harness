@@ -3,7 +3,7 @@ import csv
 
 
 def csvToArray():
-	datafile = open('out.csv', 'r')
+	datafile = open('/home/ubuntu/redwood-test-harness/data/scenarios/Scenario1/output.csv', 'r')
 	datareader = csv.reader(datafile,delimiter=',')
 	data = []
 	# no wanna hard code 
