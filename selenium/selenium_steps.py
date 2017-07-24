@@ -132,7 +132,6 @@ class local():
 		for i in range(1,5):
 			script = "window.open('" + ip + "/session/"+session_number+"/subject/" + str(i) + "');"
 			
-                        print(script);
                         self.driver.execute_script(script)
 			self.driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL + Keys.TAB)
 			# time.sleep(2)

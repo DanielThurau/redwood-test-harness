@@ -392,13 +392,23 @@ def step_impl(context, t, p, k, v):
 
 @then('at {t} participants besides {p} have {k} {v}')
 def step_impl(context, t, p, k, v):
-	pass
+	target_name2 = target_prefix + "Scenario" + str(scenario_index) + "/query.config"
+	query_target = open(target_name2, 'a')
+	global record_time
+
+	time = record_time[t];
+
+	for i in range(0, subjects_num):
+		if(int(i) != int(p)):
+		        timestamp = str(int(time)*1000000);
+		        query_target.write("timestamp:"+str(timestamp) + ",cumprofit_p" + str(i) + ":" + v + "\n");
+
 
 @then('at {t} all participants have {k} {v}')
 def step_impl(context, t, k, v):
 	# 1000000
 	target.write("------------\n");
-	pass;
+        pass
 
 # @then('at {t} participant have {k} {v}')
 # def step_impl(context, t, k, v):

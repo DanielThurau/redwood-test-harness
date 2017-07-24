@@ -26,5 +26,5 @@ os.system(osStatement);
 
 # Driveer Phase 5:
 #       trigger query 
-osStatement = "python query.py"
+osStatement = "python query.py data/scenarios/Scenario1/query.config"
 os.system(osStatement);
