@@ -5,8 +5,10 @@ import numpy as np
 from math import floor
 
 
-def csvToArray():
-	datafile = open('/home/ubuntu/redwood-test-harness/data/scenarios/Scenario1/output.csv', 'r')
+# *** Deprecated but still here ***
+# Return a 2d list of the csv
+def csvToArray(infile):
+	datafile = open(infile, 'r')
 	datareader = csv.reader(datafile,delimiter=',')
 	data = []
 	# no wanna hard code 
@@ -14,54 +16,63 @@ def csvToArray():
 	    data.append(row) 
 	return data;
 
-def csvToNumpy():
-	data = pd.read_csv('out.csv')
-	return data
 
+# return a dictionary->list pandas 
+# dataframe of the csv
+def csvToNumpy(infile):
+	return pd.read_csv(infile)
+
+
+# *** Deprecated but still here ***
+# Return a dictionary of labels 
 def createInd(line):
-	temp = [];
+	labels = [];
+	
 	for query in line.split(','):
-		temp.append(query.strip())
-	return temp;
+		labels.append(query.strip())
+	return labels;
 
-
+# Reads config file and creates a 
+# set of queries to be executed
 def readConfig(file):
 	query_sets = [];
+
 	query_file = open(file, 'r');
+	
 	for line in query_file:
 		if line[0] == "#":
 			pass;
 		else:
 			query_sets.append(createInd(line));
+	
 	return query_sets;
 
 
-def executeQ(querySet, master):
+def executeQ(query, master):
 	rowID = -1;
 	count = 0;
-	goodQuery = True;
-	num = querySet[0].strip().split(':');
-	print(num)
-	rowID = kClosestElement(int(num[1]), master)
-	print(rowID)
-	# for row in master:
-	# 	if row[0] == num[1]:
-	# 		rowID = count;
-	# 	count = count + 1;
-	# print rowID
-	for i in range(1,len(querySet)):
-		check = querySet[i].split(':');
-		print(check)
-		# index = labels[check[0]];
-		print(int(master[check[0]][rowID]))
-		if int(master[check[0]][rowID]) != int(check[1]):
-			goodQuery = False;
-	return goodQuery;
+	status = True;
+	
+	# get the timestamp of the query
+	num = query[0].strip().split(':');
 
+	# retrieve the closest element to a given
+	# value
+	rowID = kClosestElement(int(num[1]), master)
+
+	# for every tuple in the query
+	for i in range(1,len(query)):
+		
+		# break the tuple apart
+		check = query[i].split(':');
+
+		if int(master[check[0]][rowID]) != int(check[1]):
+			status = False; # if any are false update status
+	return status;
+
+# Return the value of the closest value to k
 def kClosestElement(k, data):
 	timestamps = data["timestamp"]
-
-	# print(timestamps)
 
 	index = 0
 	low = 0
@@ -85,25 +96,15 @@ def kClosestElement(k, data):
 			low = index
 
 
-query_sets = readConfig(sys.argv[1]);
-# outData = csvToArray();
-outData = csvToNumpy()
-# closestIndex = kClosestElement(6410000001, outData)
+query_sets = readConfig(sys.argv[1]) # retrieve queries
+
+outData = csvToNumpy(sys.argv[2]); # retrieve csv
 
 
-# Create a label system so i dont have to do this a billion 
-# and one fucking times
-# indexMap = {}
-# count = 0;
-# for i in outData[0]:
-# 	indexMap[i] = count;
-# 	count = count + 1;
-
-
-for item in query_sets:
+for item in query_sets: 
 	if not executeQ(item, outData):
 		print("Bad");
 		exit(1);
 print("Good")
-# exit(0);
+exit(0);
 

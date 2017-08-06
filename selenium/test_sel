@@ -1,5 +1,10 @@
 #!/bin/bash
 
-python /home/ubuntu/redwood-test-harness/selenium/selenium_steps.py HFT-CDA /home/daniel/Documents/Programming/LEEPS/Code/2.2/redwood/static/redwood-high-frequency-trading-remote/manifest.json /home/daniel/Documents/Programming/LEEPS/Code/2.2/redwood/static/experiments/redwood-high-frequency-trading-remote/config/test_config.csv 10
+EXP_TYPE=$1
+MANIFEST=$2
+SCENARIO=$3
+TIME=$4
 
-mv ~/Downloads/* ~/redwood-test-harness/data/scenarios/Scenario1/output.csv
+python $PWD/selenium_steps.py $EXP_TYPE MANIFEST SCENARIO/Config.csv TIME
+
+mv ~/Downloads/* SCENARIO/output.csv

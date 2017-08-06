@@ -1,6 +1,10 @@
 import os
 import sys
 
+MANIFEST= "data/manifests/manifest_test.json"
+TYPE = "HFT-CDA"
+
+
 # Driver Phase 1 :
 #	Copy Specified Gherkin text to Gherkin Module
 file = sys.argv[1];
@@ -21,8 +25,12 @@ os.system(osStatement);
 
 # Driver Phase 4:
 #       trigger selenium
-osStatement = "selenium/test_sel"
-os.system(osStatement);
+scenarios = next(os.walk('data/scenarios'))[1]
+for directory in scenarios:
+
+	osStatement = "selenium/test_sel " + TYPE + " " + MANIFEST + " " + directory + " 10"
+	print(osStatement)
+	os.system(osStatement);
 
 # Driveer Phase 5:
 #       trigger query 
