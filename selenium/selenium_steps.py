@@ -7,12 +7,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
 
 
-this_experiment = "HFT-CDA"
-manifest_loc = "/home/ubuntu/redwood-test-harness/data/manifests/manifest_test.json"
-config_loc = "/home/ubuntu/redwood-test-harness/data/scenarios/Scenario1/Config.json"
-# this_experiment = sys.argv[1]
-# manifest_loc = sys.argv[2]
-# config_loc = sys.argv[3]
+# this_experiment = "HFT-CDA"
+# manifest_loc = "/home/ubuntu/redwood-test-harness/data/manifests/manifest_test.json"
+# config_loc = "/home/ubuntu/redwood-test-harness/data/scenarios/Scenario1/Config.json"
+this_experiment = sys.argv[1]
+manifest_loc = sys.argv[2]
+config_loc = sys.argv[3]
 time_bloc =  sys.argv[4]
 ip = "http://172.31.43.27"
 
