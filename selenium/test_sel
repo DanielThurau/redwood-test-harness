@@ -5,6 +5,6 @@ MANIFEST=$2
 SCENARIO=$3
 TIME=$4
 
-python $PWD/selenium_steps.py $EXP_TYPE MANIFEST SCENARIO/Config.csv TIME
+python $PWD/selenium/selenium_steps.py $EXP_TYPE MANIFEST SCENARIO/Config.csv TIME
 
 mv ~/Downloads/* SCENARIO/output.csv
