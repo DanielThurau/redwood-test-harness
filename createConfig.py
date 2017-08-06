@@ -29,7 +29,7 @@ def makeConfig(mypath):
 
 f = []
 #mypath = os.path.dirname(os.path.realpath(__file__))
-mypath = "/home/dthurau/LEEPS/redwood-test-harness/data/scenarios/"
+mypath = "/home/ubuntu/redwood-test-harness/data/scenarios/"
 for (dirpath, dirnames, filenames) in walk(mypath):
     f.extend(dirnames)
 

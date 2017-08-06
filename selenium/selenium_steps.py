@@ -8,8 +8,8 @@ from selenium.webdriver import ActionChains
 
 
 this_experiment = "HFT-CDA"
-manifest_loc = "/home/daniel/Documents/Programming/LEEPS/Code/2.2/redwood/static/redwood-high-frequency-trading-remote/manifest.json"
-config_loc = "/home/daniel/Documents/Programming/LEEPS/Code/2.2/redwood/static/experiments/redwood-high-frequency-trading-remote/config/test_config.csv"
+manifest_loc = "/home/ubuntu/redwood-test-harness/data/manifests/manifest_test.json"
+config_loc = "/home/ubuntu/redwood-test-harness/data/scenarios/Scenario1/Config.json"
 # this_experiment = sys.argv[1]
 # manifest_loc = sys.argv[2]
 # config_loc = sys.argv[3]
@@ -20,7 +20,7 @@ class local():
 	def setUp(self):
 		self.driver = webdriver.Chrome();
 		# Get Admin page and assert on what we received
-		self.driver.get(ip);
+		self.driver.get(ip + "/admin");
 		self.nav("Log in | Django site admin","404")
 
 	# Login into https://54.149.235.92/admin using 
@@ -115,7 +115,7 @@ class local():
 			self.perform_experiment()
 
 	def perform_experiment(self):
-		# 
+		#
 		aElements = self.driver.find_elements_by_tag_name("a")
 		for name in aElements:
 		    if("View on site" in name.text):
@@ -131,7 +131,8 @@ class local():
 
 		for i in range(1,5):
 			script = "window.open('" + ip + "/session/"+session_number+"/subject/" + str(i) + "');"
-			self.driver.execute_script(script)
+			
+                        self.driver.execute_script(script)
 			self.driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL + Keys.TAB)
 			# time.sleep(2)
 			self.driver.switch_to_window(self.driver.window_handles[0])
@@ -149,10 +150,8 @@ class local():
 
 		# self.nav("Testing HFT Admin", "Failed to reach admin")
 		# time.sleep(10)
-		print("B4 FIRST RESET")
 		reset = self.driver.find_element_by_id("reset-session")
 		reset.send_keys(Keys.RETURN)
-		print("AFTER FIRST RESET")
 		# time.sleep(3)
 		config = self.driver.find_element_by_xpath("//*[@id=\"ui\"]/div[2]/div/input")
 		# iElements
@@ -166,8 +165,10 @@ class local():
 
 		time.sleep(float(time_bloc))
 		
-		download = self.driver.find_element_by_id("download")
-		download.send_keys(Keys.RETURN)
+		#download = self.driver.find_element_by_id("download")
+		#download.send_keys(Keys.RETURN)
+                output = self.driver.find_element_by_id("export-btn-1");
+                output.send_keys(Keys.RETURN);
 
 	def nav(self, title, err):
 		assert title in self.driver.title, err
@@ -176,7 +177,8 @@ class local():
 	def tearDown(self):
 		print("In destructor\n")
 		self.driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL+Keys.SHIFT+"q")
-		self.driver.close()
+		self.driver.quit()
+                #self.driver.close()
 
 
 
@@ -185,7 +187,7 @@ class local():
 x = local()
 x.setUp()
 x.test_local()
-# time.sleep(360)
+#time.sleep(360)
 x.tearDown()
 
 		
