@@ -1,5 +1,8 @@
 import sys
 import csv
+import pandas as pd 
+import numpy as np
+from math import floor
 
 
 def csvToArray():
@@ -10,6 +13,10 @@ def csvToArray():
 	for row in datareader:
 	    data.append(row) 
 	return data;
+
+def csvToNumpy():
+	data = pd.read_csv('out.csv')
+	return data
 
 def createInd(line):
 	temp = [];
@@ -46,24 +53,53 @@ def executeQ(querySet, master, labels):
 			goodQuery = False;
 	return goodQuery;
 
+def kClosestElement(k, data):
+	timestamps = data["timestamp"]
+
+	# print(timestamps)
+
+	index = 0
+	low = 0
+	high = len(timestamps) - 1
+	while True:
+		if high == low:
+			return high
+		elif high - low == 1:
+			higher = abs(timestamps[high] - k)
+			lower = abs(timestamps[low] - k)
+			if higher > lower:
+				return low
+			else:
+				return high
+		index = low + int(floor((high - low) / 2))
+		if timestamps[index] == k:
+			return index
+		elif timestamps[index] > k:
+			high = index
+		else:
+			low = index
 
 
 query_sets = readConfig(sys.argv[1]);
-outData = csvToArray();
+# outData = csvToArray();
+outData = csvToNumpy()
+closestIndex = kClosestElement(6410000001, outData)
+
+print("closest k index: " + str(closestIndex) + " value: " + str(outData['timestamp'][closestIndex]))
 
 # Create a label system so i dont have to do this a billion 
 # and one fucking times
-indexMap = {}
-count = 0;
-for i in outData[0]:
-	indexMap[i] = count;
-	count = count + 1;
+# indexMap = {}
+# count = 0;
+# for i in outData[0]:
+# 	indexMap[i] = count;
+# 	count = count + 1;
 
 
-for item in query_sets:
-	if not executeQ(item, outData, indexMap):
-		print("Bad");
-		exit(1);
-print("Good")
-exit(0);
+# for item in query_sets:
+# 	if not executeQ(item, outData, indexMap):
+# 		print("Bad");
+# 		exit(1);
+# print("Good")
+# exit(0);
 
