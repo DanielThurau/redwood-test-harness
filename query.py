@@ -36,20 +36,25 @@ def readConfig(file):
 	return query_sets;
 
 
-def executeQ(querySet, master, labels):
+def executeQ(querySet, master):
 	rowID = -1;
 	count = 0;
 	goodQuery = True;
 	num = querySet[0].strip().split(':');
-	for row in master:
-		if row[0] == num[1]:
-			rowID = count;
-		count = count + 1;
+	print(num)
+	rowID = kClosestElement(int(num[1]), master)
+	print(rowID)
+	# for row in master:
+	# 	if row[0] == num[1]:
+	# 		rowID = count;
+	# 	count = count + 1;
 	# print rowID
 	for i in range(1,len(querySet)):
 		check = querySet[i].split(':');
-		index = labels[check[0]];
-		if master[rowID][index] != check[1]:
+		print(check)
+		# index = labels[check[0]];
+		print(int(master[check[0]][rowID]))
+		if int(master[check[0]][rowID]) != int(check[1]):
 			goodQuery = False;
 	return goodQuery;
 
@@ -83,9 +88,8 @@ def kClosestElement(k, data):
 query_sets = readConfig(sys.argv[1]);
 # outData = csvToArray();
 outData = csvToNumpy()
-closestIndex = kClosestElement(6410000001, outData)
+# closestIndex = kClosestElement(6410000001, outData)
 
-print("closest k index: " + str(closestIndex) + " value: " + str(outData['timestamp'][closestIndex]))
 
 # Create a label system so i dont have to do this a billion 
 # and one fucking times
@@ -96,10 +100,10 @@ print("closest k index: " + str(closestIndex) + " value: " + str(outData['timest
 # 	count = count + 1;
 
 
-# for item in query_sets:
-# 	if not executeQ(item, outData, indexMap):
-# 		print("Bad");
-# 		exit(1);
-# print("Good")
+for item in query_sets:
+	if not executeQ(item, outData):
+		print("Bad");
+		exit(1);
+print("Good")
 # exit(0);
 
