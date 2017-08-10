@@ -180,7 +180,6 @@ class local():
                 print("In destructor\n")
 		self.driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL+Keys.SHIFT+"q")
 		self.driver.quit()
-                self.driver.close()
 
 
 

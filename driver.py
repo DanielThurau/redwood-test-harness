@@ -3,7 +3,8 @@ import sys
 
 print("usage: python driver.py gherkin-file")
 
-MANIFEST= "data/manifests/manifest_test.json"
+TOPDIR = os.path.dirname(os.path.realpath(__file__)) + "/"
+MANIFEST= TOPDIR + "data/manifests/manifest_test.json"
 TYPE = "HFT-CDA"
 
 
@@ -30,7 +31,7 @@ os.system(osStatement);
 scenarios = next(os.walk('data/scenarios'))[1]
 for directory in scenarios:
 
-	osStatement = "selenium/test_sel " + TYPE + " " + MANIFEST + " " + directory + " 10"
+	osStatement = "selenium/test_sel " + TYPE + " " + MANIFEST + " " + TOPDIR +  directory + " 10"
 	print(osStatement)
 	os.system(osStatement);
 
