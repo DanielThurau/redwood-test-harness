@@ -31,7 +31,7 @@ os.system(osStatement);
 scenarios = next(os.walk('data/scenarios'))[1]
 for directory in scenarios:
 
-	osStatement = "selenium/test_sel " + TYPE + " " + MANIFEST + " " + TOPDIR +  directory + " 10"
+	osStatement = "selenium/test_sel " + TYPE + " " + MANIFEST + " " + TOPDIR + "data/scenarios/" +  directory + " 10"
 	print(osStatement)
 	os.system(osStatement);
 

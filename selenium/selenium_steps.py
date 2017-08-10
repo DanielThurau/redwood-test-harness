@@ -16,6 +16,13 @@ config_loc = sys.argv[3]
 time_bloc =  sys.argv[4]
 ip = "http://172.31.43.27"
 
+print(this_experiment)
+print(manifest_loc)
+print(config_loc)
+print(time_bloc)
+
+
+
 class local():
 	def setUp(self):
 		self.driver = webdriver.Chrome();
@@ -159,17 +166,17 @@ class local():
 		start = self.driver.find_element_by_id("start-session")
 		start.send_keys(Keys.RETURN)
 
-		#config.send_keys(config_loc)
+		config.send_keys(config_loc)
 
 		# config.send_keys("/home/daniel/Documents/Programming/LEEPS/Code/2.2/redwood/static/experiments/redwood-high-frequency-trading-remote/config/test_config.csv")
 
-		#time.sleep(float(time_bloc))
+		time.sleep(float(time_bloc))
 		
-		#download = self.driver.find_element_by_id("download")
-		#download.send_keys(Keys.RETURN)
+		download = self.driver.find_element_by_id("download")
+		download.send_keys(Keys.RETURN)
                 output = self.driver.find_element_by_id("export-profits");
-                print(output);
                 output.send_keys(Keys.RETURN);
+                time.sleep(float(time_bloc))
 
 	def nav(self, title, err):
 		assert title in self.driver.title, err
