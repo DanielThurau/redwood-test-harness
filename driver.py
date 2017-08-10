@@ -1,6 +1,8 @@
 import os
 import sys
 
+print("usage: python driver.py gherkin-file")
+
 MANIFEST= "data/manifests/manifest_test.json"
 TYPE = "HFT-CDA"
 
@@ -34,5 +36,5 @@ for directory in scenarios:
 
 # Driveer Phase 5:
 #       trigger query 
-osStatement = "python query.py data/scenarios/Scenario1/query.config"
-os.system(osStatement);
+#osStatement = "python query.py data/scenarios/Scenario1/query.config"
+#os.system(osStatement);
