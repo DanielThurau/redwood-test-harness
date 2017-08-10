@@ -37,6 +37,4 @@ Feature: value jump
       | maker | spread| profit | sniper |
       | 1     | 2     | 0      | 2      |
       | 2     | 2     | 0      | 3      |
-      | 3     | 2     | 0      | 4      |
-      | 4     | 2     | 0      | 1      |
 

@@ -382,7 +382,8 @@ def step_impl(context, t, p, k, v):
 		# 		spread = int(v) - int(subjects_list[int(p)]["bid0"])
 		# 		user_target.write(str(record_time[t]) + ",SPREAD," + str(spread) + "\n")				
 		# 	else:
-		# 		user_target.write(str(record_time[t]) + ",OUT\n")				
+		# 		user_target.write(str(record_time[t]) + ",OUT\n")		
+                pass
 	elif( k == "profit"):
 		timestamp = str(int(time)*1000000);
 		query_target.write("timestamp:"+str(timestamp) + ",cumprofit_p" + p + ":" + v + "\n");
