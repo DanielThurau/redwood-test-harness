@@ -159,15 +159,16 @@ class local():
 		start = self.driver.find_element_by_id("start-session")
 		start.send_keys(Keys.RETURN)
 
-		config.send_keys(config_loc)
+		#config.send_keys(config_loc)
 
 		# config.send_keys("/home/daniel/Documents/Programming/LEEPS/Code/2.2/redwood/static/experiments/redwood-high-frequency-trading-remote/config/test_config.csv")
 
-		time.sleep(float(time_bloc))
+		#time.sleep(float(time_bloc))
 		
 		#download = self.driver.find_element_by_id("download")
 		#download.send_keys(Keys.RETURN)
-                output = self.driver.find_element_by_id("export-btn-1");
+                output = self.driver.find_element_by_id("export-profits");
+                print(output);
                 output.send_keys(Keys.RETURN);
 
 	def nav(self, title, err):
