@@ -377,11 +377,12 @@ def step_impl(context, t, p, k, v):
 	elif ( k == "spread"):
 		timestamp = str(int(time)*1000000);
 		query_target.write("timestamp:"+str(timestamp) + ",spread_p" + p + ":" + v  + "\n");
+
 		for i in range(0, subjects_num):
-			target_name = target_prefix + "Scenario" + str(scenario_index) + "/T" + str(scenario_index) + "_P" + str(i) + "_input.csv"
+			target_name = target_prefix + "Scenario" + str(scenario_index) + "/T" + str(scenario_index) + "_P" + str(i) + ".csv"
 			user_target = open(target_name, 'a')
 			if(int(i) == int(p)):
-
+				print(str(subjects_num))
 				# subjects_list[int(p)][str(k)] = v
 				
 				spread = int(v)
