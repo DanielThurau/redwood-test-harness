@@ -115,6 +115,8 @@ def step_impl(context):
 	# Create direvtory
 	dir_create = "mkdir " + target_prefix + "Scenario" + str(scenario_index)
 	os.system(dir_create)
+	out_create = "touch " + target_prefix + "Scenario" + str(scenario_index) + "/output.csv"
+	os.system(out_create)
 
 	if(scenario_index > 1):
 		reset_users();
