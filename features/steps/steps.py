@@ -372,6 +372,23 @@ def step_impl(context, t, p, k, v):
 			if(int(i) == int(p)):
 				subjects_list[int(p)][str(k)] = v
 	elif( k == "offer" ):
+		# for i in range(0, subjects_num):
+		# 	target_name = target_prefix + "Scenario" + str(scenario_index) + "/T" + str(scenario_index) + "_P" + str(i) + "_input.csv"
+		# 	user_target = open(target_name, 'a')
+		# 	if(int(i) == int(p)):
+
+		# 		subjects_list[int(p)][str(k)] = v
+				
+		# 		spread = int(v) - int(subjects_list[int(p)]["bid0"])
+		# 		user_target.write(str(record_time[t]) + ",SPREAD," + str(spread) + "\n")				
+		# 	else:
+		# 		user_target.write(str(record_time[t]) + ",OUT\n")				
+	elif( k == "profit"):
+		timestamp = str(int(time)*1000000);
+		query_target.write("timestamp:"+str(timestamp) + ",cumprofit_p" + p + ":" + v + "\n");
+	elif ( k == "spread"):
+		timestamp = str(int(time)*1000000);
+		query_target.write("timestamp:"+str(timestamp) + ",spread_p" + p + ":" + v  + "\n");
 		for i in range(0, subjects_num):
 			target_name = target_prefix + "Scenario" + str(scenario_index) + "/T" + str(scenario_index) + "_P" + str(i) + "_input.csv"
 			user_target = open(target_name, 'a')
@@ -382,13 +399,7 @@ def step_impl(context, t, p, k, v):
 				spread = int(v) - int(subjects_list[int(p)]["bid0"])
 				user_target.write(str(record_time[t]) + ",SPREAD," + str(spread) + "\n")				
 			else:
-				user_target.write(str(record_time[t]) + ",OUT\n")				
-	elif( k == "profit"):
-		timestamp = str(int(time)*1000000);
-		query_target.write("timestamp:"+str(timestamp) + ",cumprofit_p" + p + ":" + v + "\n");
-	elif ( k == "spread"):
-		timestamp = str(int(time)*1000000);
-		query_target.write("timestamp:"+str(timestamp) + ",spread_p" + p + ":" + v  + "\n");
+				user_target.write(str(record_time[t]) + ",OUT\n")		
 
 
 
