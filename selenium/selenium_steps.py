@@ -155,28 +155,27 @@ class local():
 		get_string = ip + "/session/"+session_number+"/admin"
 		self.driver.get(get_string)
 
+		config = self.driver.find_element_by_xpath("//*[@id=\"ui\"]/div[2]/div/input")
+		# iElements
+		config.send_keys(config_loc)
+		
 		# self.nav("Testing HFT Admin", "Failed to reach admin")
 		# time.sleep(10)
 		reset = self.driver.find_element_by_id("reset-session")
 		reset.send_keys(Keys.RETURN)
 		# time.sleep(3)
-		config = self.driver.find_element_by_xpath("//*[@id=\"ui\"]/div[2]/div/input")
-		# iElements
 
 		start = self.driver.find_element_by_id("start-session")
 		start.send_keys(Keys.RETURN)
 
-		config.send_keys(config_loc)
 
 		# config.send_keys("/home/daniel/Documents/Programming/LEEPS/Code/2.2/redwood/static/experiments/redwood-high-frequency-trading-remote/config/test_config.csv")
 
 		time.sleep(float(time_bloc))
 		
-		download = self.driver.find_element_by_id("download")
-		download.send_keys(Keys.RETURN)
                 output = self.driver.find_element_by_id("export-profits");
                 output.send_keys(Keys.RETURN);
-                time.sleep(float(time_bloc))
+                time.sleep(float(1))
 
 	def nav(self, title, err):
 		assert title in self.driver.title, err

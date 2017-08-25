@@ -5,7 +5,7 @@ import fnmatch
 
 
 def makeConfig(mypath):
-	file = mypath+'/Config.csv' 
+	file = mypath+'/Config.json' 
 	target = open(file, 'w')
 	target.write("period,subject,groups,startingWealth,speedCost,maxSpread,marketEventsURL,priceChangesURL,input_addresses\n")
 	target.write("1,default,\"[[1,2,3,4]]\",140,0.01,4,")
