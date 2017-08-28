@@ -43,7 +43,7 @@ record_time = {}
 # CSV target
 target = open(file, 'w')
 # Scenario prefix
-target_prefix = "/home/ubuntu/redwood-test-harness/data/scenarios/"
+target_prefix = "/home/dthurau/redwood-test-harness/data/scenarios/"
 
 
 #!--------------------------------------------------------------------->
@@ -181,7 +181,7 @@ def step_impl(context, value, time):
 		target.write("---------------Adding values to jump.csv---------------\n")
 
 	global scenario_index
-	jump_name = target_prefix + "Scenario" + str(scenario_index) + "/T"+ str(scenario_index) + "_jump.csv"
+	jump_name = target_prefix + "Scenario" + str(scenario_index) + "/T1_jump.csv"
 	jump_targ = open(jump_name, 'w')
 
 	# initial header for the file
@@ -197,7 +197,7 @@ def step_impl(context, value, time):
 
 	# global scenario_index
 
-	inv_name = target_prefix + "Scenario" + str(scenario_index) + "/T"+ str(scenario_index) + "_investors.csv"
+	inv_name = target_prefix + "Scenario" + str(scenario_index) + "/T1_investors.csv"
 	inv_targ = open(inv_name, 'w')
 
 	# initial header for the file
@@ -227,7 +227,7 @@ def step_impl(context, t, d):
 		target.write("---------------Adding values to investor.csv---------------\n")
 
 	global scenario_index
-	inv_name = target_prefix + "Scenario" + str(scenario_index) + "/T"+ str(scenario_index) + "_investors.csv"
+	inv_name = target_prefix + "Scenario" + str(scenario_index) + "/T1_investors.csv"
 	inv_targ = open(inv_name, 'w')
 
 	direction = -1
@@ -379,7 +379,7 @@ def step_impl(context, t, p, k, v):
 		query_target.write("timestamp:"+str(timestamp) + ",spread_p" + p + ":" + v  + "\n");
 
 		for i in range(0, subjects_num):
-			target_name = target_prefix + "Scenario" + str(scenario_index) + "/T" + str(scenario_index) + "_P" + str(i) + "_input.csv"
+			target_name = target_prefix + "Scenario" + str(scenario_index) + "/T1_P" + str(i) + "_input.csv"
 			user_target = open(target_name, 'a')
 			if(int(i) == int(p)):
 				print(str(subjects_num))
