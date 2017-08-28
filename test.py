@@ -35,9 +35,3 @@ for diry in mydirs:
 		for link in inputLinks:
 			f.write("input_" + str(count) + ">" + link[0] + "\n")
 			count = count + 1
-	print("INPUTS")
-	print(inputLinks)
-	print("JUMPS")
-	print(jumpLink)
-	print("INVESTS")
-	print(investLink)

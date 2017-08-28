@@ -7,5 +7,5 @@ TIME=$4
 
 python $PWD/selenium/selenium_steps.py $EXP_TYPE $MANIFEST $SCENARIO/Config.csv $TIME
 
-cp ~/Downloads/*group* $SCENARIO/output.csv
-rm ~/Downloads/*group*
+mv ~/Downloads/*group* $SCENARIO/output.csv
+#rm ~/Downloads/*group*

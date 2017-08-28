@@ -5,7 +5,7 @@ print("usage: python driver.py gherkin-file")
 
 TOPDIR = os.path.dirname(os.path.realpath(__file__)) + "/"
 MANIFEST= TOPDIR + "data/manifests/manifest_test.json"
-TYPE = "HFT-CDA"
+TYPE = "CDA"
 
 
 # Driver Phase 1 :
@@ -27,17 +27,16 @@ os.system(osStatement);
 
 # Driver Phase 3 :
 #	run python script on Scenarios dir
-#osStatement = "python createConfig.py"
-#os.system(osStatement);
+osStatement = "python createConfig.py"
+os.system(osStatement);
 
 # Driver Phase 4:
 #       trigger selenium
-#scenarios = next(os.walk('data/scenarios'))[1]
-#for directory in scenarios:
-
-#	osStatement = "selenium/test_sel " + TYPE + " " + MANIFEST + " " + TOPDIR + "data/scenarios/" +  directory + " 10"
-#	print(osStatement)
-#	os.system(osStatement);
+scenarios = next(os.walk('data/scenarios'))[1]
+for directory in scenarios:
+	osStatement = "selenium/test_sel " + TYPE + " " + MANIFEST + " " + TOPDIR + "data/scenarios/" +  directory + " 10"
+	print(osStatement)
+	os.system(osStatement);
 
 # Driveer Phase 5:
 #       trigger query 
