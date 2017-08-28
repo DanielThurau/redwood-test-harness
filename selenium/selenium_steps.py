@@ -14,7 +14,8 @@ this_experiment = sys.argv[1]
 manifest_loc = sys.argv[2]
 config_loc = sys.argv[3]
 time_bloc =  sys.argv[4]
-ip = "http://172.31.43.27"
+#ip = "http://172.31.43.27"
+ip="http://ec2-54-186-49-209.us-west-2.compute.amazonaws.com"
 
 print(this_experiment)
 print(manifest_loc)
@@ -41,11 +42,11 @@ class local():
 		# Performs login for driver
 		elem_user = self.driver.find_element_by_name("username")
 		elem_user.clear()
-		elem_user.send_keys("admin")
+		elem_user.send_keys("root")
 
 		elem_pass = self.driver.find_element_by_name("password")
 		elem_pass.clear()
-		elem_pass.send_keys("admin")
+		elem_pass.send_keys("root")
 		
 		#launch 
 		elem_pass.send_keys(Keys.RETURN)
@@ -173,7 +174,7 @@ class local():
 
 		time.sleep(float(time_bloc))
 		
-                output = self.driver.find_element_by_id("export-profits");
+                output = self.driver.find_element_by_id("export-btn-1");
                 output.send_keys(Keys.RETURN);
                 time.sleep(float(1))
 
