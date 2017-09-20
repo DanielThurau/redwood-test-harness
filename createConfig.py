@@ -8,7 +8,7 @@ mypath = "/home/dthurau/redwood-test-harness/data/scenarios/"
 def makeConfig(mypath):
 	file = mypath+'/Config.csv' 
 	target = open(file, 'w')
-	target.write("period,subject,groups,startingWealth,speedCost,maxSpread,marketEventsURL,priceChangesURL,input_addresses\n")
+	target.write("period,subject,groups,startingWealth,speedCost,maxSpread,marketEventsURL,priceChangesURL,input_addresses,experimentLength,exchangeRate,exchangeURI\n")
 	target.write("1,default,\"[[1,2,3,4]]\",140,0.01,4,")
 	
 	with open(mypath + "/.configRead", 'r') as f:	
@@ -24,7 +24,8 @@ def makeConfig(mypath):
 				target.write(double[1] + ',')
 		target.seek(-1, os.SEEK_END)
 		target.truncate()
-		target.write('\"')			
+		target.write('\",')
+		target.write('30000,10,54.149.235.92')	
 #	for file in os.listdir(mypath):
 #		if fnmatch.fnmatch(file, '*investors*'):
 #			target.write(mypath + '/' + file + ',')

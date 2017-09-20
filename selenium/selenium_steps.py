@@ -18,8 +18,8 @@ manifest_loc = sys.argv[2]
 config_loc = sys.argv[3]
 time_bloc =  sys.argv[4]
 #ip = "http://172.31.43.27"
-ip="http://ec2-54-186-49-209.us-west-2.compute.amazonaws.com"
-
+#ip="http://ec2-54-186-49-209.us-west-2.compute.amazonaws.com"
+ip = "http://127.0.0.1"
 print(this_experiment)
 print(manifest_loc)
 print(config_loc)
@@ -63,7 +63,7 @@ class local():
     # Navigate to the experiment tab
     self.driver.get(ip + "/admin/expecon/experiment/")
     self.nav("Select experiment to change | Django site admin", "Did not reach experiments")
-    exists = True
+    exists = False
 
     # Try to grab all already entered experiements, and check to see if exists
     try:
@@ -77,14 +77,14 @@ class local():
         # if i == experiment: # Change to gloabal var
         if i == this_experiment:
         #*****************************************************************************
-          exists = False
+          exists = True
           elem = self.driver.find_element_by_link_text(this_experiment)
           self.driver.get(elem.get_attribute("href"))
           self.perform_experiment()
     # Possibly a none existent element
     except NoSuchElementException:
       pass
-    if(exists):
+    if not exists:
       # if DNE add the experiment
       self.driver.get(ip + "/admin/expecon/experiment/add/")
       self.nav("Add experiment | Django site admin", "Failed to add experiment")
@@ -170,7 +170,9 @@ class local():
     print("RESETING")
     reset = self.driver.find_element_by_id("reset-session")
     reset.send_keys(Keys.RETURN)
-    WebDriverWait(self.driver, 2)
+    print("sleeping started")
+    time.sleep(2)
+    print("sleeping ended")
     print("STARTING")
     start = self.driver.find_element_by_id("start-session")
     start.send_keys(Keys.RETURN)

@@ -43,7 +43,7 @@ record_time = {}
 # CSV target
 target = open(file, 'w')
 # Scenario prefix
-target_prefix = "/home/ubuntu/redwood-test-harness/data/scenarios/"
+target_prefix = "/home/dthurau/redwood-test-harness/data/scenarios/"
 
 
 #!--------------------------------------------------------------------->

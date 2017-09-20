@@ -2,7 +2,7 @@ import fnmatch
 import os
 from Upload import *
 
-data_dir = "/home/ubuntu/redwood-test-harness/data/scenarios/"
+data_dir = "/home/dthurau/redwood-test-harness/data/scenarios/"
 
 os.system("rm -rf data/scenarios/*")
 print("before")
