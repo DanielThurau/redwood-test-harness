@@ -169,7 +169,7 @@ class local():
     # time.sleep(10)
     print("RESETING")
     reset = self.driver.find_element_by_id("reset-session")
-	reset.send_keys(Keys.RETURN)
+    reset.send_keys(Keys.RETURN)
     WebDriverWait(self.driver, 2)
     print("STARTING")
     start = self.driver.find_element_by_id("start-session")
