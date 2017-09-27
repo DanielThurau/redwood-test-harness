@@ -4,9 +4,8 @@ import sys
 print("usage: python driver.py gherkin-file")
 
 TOPDIR = os.path.dirname(os.path.realpath(__file__)) + "/"
-MANIFEST= TOPDIR + "data/manifests/manifest_test.json"
+MANIFEST= TOPDIR + "data/manifests/CDA_Manifest.json"
 TYPE = "CDA"
-
 
 # Driver Phase 1 :
 #	Copy Specified Gherkin text to Gherkin Module
@@ -30,20 +29,28 @@ os.system(osStatement);
 osStatement = "python createConfig.py"
 os.system(osStatement);
 
+
 # Driver Phase 4:
 #       trigger selenium
 scenarios = next(os.walk('data/scenarios'))[1]
 for directory in scenarios:
-	osStatement = "selenium/test_sel " + TYPE + " " + MANIFEST + " " + TOPDIR + "data/scenarios/" +  directory + " 10"
+	while True:
+		Join = raw_input('Would you like to run a selenium experiment?(y/n)\n')
+		if Join == "y" or Join == "yes" or Join == "Y" or Join == "yes":
+			break
+		elif Join == "n" or Join == "no" or Join == "N" or Join == "no":
+			exit()
+		else:
+			Join = raw_input('Would you like to run a selenium experiment?(y/n)\n')
+	osStatement = "selenium/test_sel " + TYPE + " " + MANIFEST + " " + TOPDIR + "data/scenarios/" +  directory + " 45"
 	print(osStatement)
 	os.system(osStatement);
 
 # Driveer Phase 5:
 #       trigger query 
 
-
 scenarios = next(os.walk('data/scenarios'))[1]
 for directory in scenarios:
-	osStatement = "python query.py data/scenarios/" + directory + "/query.config"
+	osStatement = "python query.py data/scenarios/" + directory + "/query.config data/scenarios/" + directory + "/output.csv"
 	print(osStatement)
 	os.system(osStatement);
