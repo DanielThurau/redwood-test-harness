@@ -35,7 +35,7 @@ Feature: value jump
             
   Examples:
     | maker1 | spread1| maker2 | spread2 |
-    | 1      | 2      | 4      | 2       |
+    | 0      | 2      | 3      | 2       |
+    | 1      | 2      | 0      | 2       |
     | 2      | 2      | 1      | 2       |
     | 3      | 2      | 2      | 2       |
-    | 4      | 2      | 3      | 2       |
