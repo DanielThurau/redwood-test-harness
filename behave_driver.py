@@ -2,14 +2,11 @@ import fnmatch
 import os
 from Upload import *
 
-data_dir = "/home/dthurau/redwood-test-harness/data/scenarios/"
+data_dir = "/home/leeps/redwood-test-harness/data/scenarios/"
 
 os.system("rm -rf data/scenarios/*")
-print("before")
 
 os.system("./features/steps/run.sh")
-
-print("After")
 
 mydirs = []
 

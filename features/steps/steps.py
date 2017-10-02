@@ -43,7 +43,7 @@ record_time = {}
 # CSV target
 target = open(file, 'w')
 # Scenario prefix
-target_prefix = "/home/dthurau/redwood-test-harness/data/scenarios/"
+target_prefix = "/home/leeps/redwood-test-harness/data/scenarios/"
 
 
 #!--------------------------------------------------------------------->
@@ -188,6 +188,7 @@ def step_impl(context, value, time):
 	jump_targ.write("jumpTime,jumpSizes\n")
 	if(time != "-1"):
 	# V0
+		jump_targ.write("0," + global_default_params["V0"] +  "\n")
 		jump_targ.write("0," + global_default_params["V0"] +  "\n")
 		# trigger time
 		jump_targ.write(global_default_params[time] + ',' + value + "\n")
@@ -410,7 +411,6 @@ def step_impl(context, t, p, k, v):
 def step_impl(context, t, k, v):
 	# 1000000
 	target.write("------------\n");
-        pass
 
 # @then('at {t} participant have {k} {v}')
 # def step_impl(context, t, k, v):
