@@ -43,7 +43,7 @@ record_time = {}
 # CSV target
 target = open(file, 'w')
 # Scenario prefix
-target_prefix = "/home/leeps/redwood-test-harness/data/scenarios/"
+target_prefix = "/home/dthurau/redwood-test-harness/data/scenarios/"
 
 
 #!--------------------------------------------------------------------->
@@ -141,7 +141,10 @@ def step_impl(context):
 		# add it subject_list 
 		# !! subject list is the list that contains all users !!
 		subjects_list.append(temp)
-
+	for i in range(0, subjects_num):
+			target_name = target_prefix + "Scenario" + str(scenario_index) + "/T1_P" + str(i) + "_input.csv"
+			user_target = open(target_name, 'a')
+			user_target.write(str("0" + ",OUT\n"))		
 
 # Takes modified attributes of participants
 @given('participant {p} has {key} updated to {value}')
@@ -165,6 +168,7 @@ def step_impl(context, p, key, value):
 
 	# update the value
 	subjects_list[int(p)][key] = value
+
 
 	if(DUMP):
 		target.write("-------------------Updating Attribute-------------------\n")
@@ -374,7 +378,7 @@ def step_impl(context, t, p, k, v):
 		pass
 	elif( k == "profit"):
 		timestamp = str(int(time)*1000000);
-		query_target.write("timestamp:"+str(timestamp) + ",cumprofit_p" + p + ":" + v + "\n");
+		query_target.write("timestamp:"+str(timestamp) + ",dprofit_p" + p + ":" + v + "\n");
 	elif ( k == "spread"):
 		timestamp = str(int(time)*1000000);
 		query_target.write("timestamp:"+str(timestamp) + ",spread_p" + p + ":" + v  + "\n");
@@ -389,7 +393,8 @@ def step_impl(context, t, p, k, v):
 				spread = int(v)
 				user_target.write(str(record_time[t]) + ",SPREAD," + str(spread) + "\n")				
 			else:
-				user_target.write(str(record_time[t]) + ",OUT\n")		
+				pass
+				# user_target.write(str(record_time[t]) + ",OUT\n")		
 
 
 
@@ -404,7 +409,9 @@ def step_impl(context, t, p, k, v):
 	for i in range(0, subjects_num):
 		if(int(i) != int(p)):
 		        timestamp = str(int(time)*1000000);
-		        query_target.write("timestamp:"+str(timestamp) + ",cumprofit_p" + str(i) + ":" + v + "\n");
+		        if i == 0: 
+		        	i = 4
+		        query_target.write("timestamp:"+str(timestamp) + ",dprofit_p" + str(i+1) + ":" + v + "\n");
 
 
 @then('at {t} all participants have {k} {v}')

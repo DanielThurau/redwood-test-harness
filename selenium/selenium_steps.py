@@ -10,20 +10,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-# this_experiment = "HFT-CDA"
-# manifest_loc = "/home/ubuntu/redwood-test-harness/data/manifests/manifest_test.json"
-# config_loc = "/home/ubuntu/redwood-test-harness/data/scenarios/Scenario1/Config.json"
 this_experiment = sys.argv[1]
 manifest_loc = sys.argv[2]
 config_loc = sys.argv[3]
 time_bloc =  sys.argv[4]
-#ip = "http://172.31.43.27"
-#ip="http://ec2-54-186-49-209.us-west-2.compute.amazonaws.com"
 ip = "http://127.0.0.1"
-print(this_experiment)
-print(manifest_loc)
-print(config_loc)
-print(time_bloc)
 
 
 
@@ -158,35 +149,16 @@ class local():
     get_string = ip + "/session/"+session_number+"/admin"
     self.driver.get(get_string)
 
-    print("Superimo")
     test = self.driver.find_element_by_tag_name('input')
     print("Config loc:")
     print(config_loc)
-# iElements
     test.send_keys(config_loc)
     
-    # self.nav("Testing HFT Admin", "Failed to reach admin")
-    # time.sleep(10)
-    print("RESETING")
     reset = self.driver.find_element_by_id("reset-session")
     reset.send_keys(Keys.RETURN)
-    print("sleeping started")
     time.sleep(2)
-    print("sleeping ended")
-    print("STARTING")
     start = self.driver.find_element_by_id("start-session")
     start.send_keys(Keys.RETURN)
-    # config.send_keys("/home/daniel/Documents/Programming/LEEPS/Code/2.2/redwood/static/experiments/redwood-high-frequency-trading-remote/config/test_config.csv")
-    #time.sleep(float(time_bloc))
-    #WebDriverWait(self.driver, 15)
-    #output = self.driver.find_element_by_id("export-btn-1");
-    #output.send_keys(Keys.RETURN);
-    #WebDriverWait(self.driver,2)  
-    try:
-      element = WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.ID, "export-btn-1")))
-      element.send_keys(Keys.RETURN)
-    except:
-      pass
 
 
   def nav(self, title, err):
@@ -194,11 +166,8 @@ class local():
 
   
   def tearDown(self):
-    log = open(".log","w+");
-    log.write("In destructor");
-    print("In destructor\n")
-    #self.driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL+Keys.SHIFT+"q")
-    #self.driver.quit()
+    # self.driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL+Keys.SHIFT+"q")
+    # self.driver.quit()
 
 
 
@@ -207,7 +176,6 @@ class local():
 x = local()
 x.setUp()
 x.test_local()
-#time.sleep(20)
 x.tearDown()
 
     

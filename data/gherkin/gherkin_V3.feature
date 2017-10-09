@@ -19,6 +19,7 @@ Feature: value jump
       and session lasts 10 seconds
 
 
+
   Scenario Outline: 1 slow maker and 1 fast sniper and investor arrival before snipe
     Given default parameters for users
       but participant <maker> has status updated to make
@@ -30,13 +31,15 @@ Feature: value jump
         | time1                             | time2                             |
         | trigger_time+delta_slow-delta_eps | trigger_time+delta_slow+delta_eps |
       and session runs to completion
-    Then at time1 participant <maker> has spread <spread>
-      and at time1 participant <maker> has profit 110 - <offer>
+    Then at time1 participant <maker> has bid <bid>
+      and at time1 participant <maker> has offer0 <offer>
+      and at time1 participant <maker> has profit 110 - <offer0>
       and at time1 participants besides <maker> have profit 0
       
   Examples:
-    | maker | offer | sniper | spread |
-    | 1     | 111   | 2      |   2    |
-    | 2     | 111   | 3      |   2    |
-    | 3     | 111   | 4      |   2    |
-    | 4     | 111   | 1      |   2    |
+    | maker | bid | offer | sniper |
+    | 1     | 109 | 111   | 2      |
+    | 2     | 109 | 111   | 3      |
+#    | 3     | 109 | 111   | 4      |
+#    | 4     | 109 | 111   | 1      |
+  

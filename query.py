@@ -67,11 +67,11 @@ def executeQ(query, master):
 		
 		# break the tuple apart
 		check = query[i].split(':');
-		print(i)
-		print("Comparative: " + str(int(master[check[0]][rowID])) + " " + str(int(check[1])))
+		# print(i)
+		# print("Comparative: " + str(int(master[check[0]][rowID])) + " " + str(int(check[1])))
 		
-		# if int(master[check[0]][rowID]) != int(check[1]):
-		# 	status = False; # if any are false update status
+		if int(master[check[0]][rowID]) != int(check[1]):
+			status = False; # if any are false update status
 
 	return status;
 

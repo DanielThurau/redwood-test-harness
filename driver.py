@@ -5,7 +5,7 @@ import sys
 
 TOPDIR = os.path.dirname(os.path.realpath(__file__)) + "/"
 MANIFEST= TOPDIR + "data/manifests/CDA_Manifest.json"
-TYPE = "HFT-CDA"
+TYPE = "CDA"
 
 # Driver Phase 1 :
 #	Copy Specified Gherkin text to Gherkin Module
