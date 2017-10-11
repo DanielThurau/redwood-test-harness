@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import os
 import sys
 
@@ -43,6 +45,12 @@ for directory in scenarios:
 	osStatement = "selenium/selenium_driver " + TYPE + " " + MANIFEST + " " + TOPDIR + "data/scenarios/" +  directory + " 45"
 	# print(osStatement)
 	os.system(osStatement);
+
+	# Copy exchange server logs to current directory
+	copyStatemnt = "rsync -avz --remove-source-files -e ssh ubuntu@ec2-54-149-235-92.us-west-2.compute.amazonaws.com:/var/HFT2/CDA_DATA/* " + TOPDIR + "data/scenarios/" + directory
+	# print(copyStatemnt)
+	os.system(copyStatemnt)
+
 
 # Driveer Phase 5:
 #       trigger query 

@@ -150,8 +150,6 @@ class local():
     self.driver.get(get_string)
 
     test = self.driver.find_element_by_tag_name('input')
-    print("Config loc:")
-    print(config_loc)
     test.send_keys(config_loc)
     
     reset = self.driver.find_element_by_id("reset-session")
