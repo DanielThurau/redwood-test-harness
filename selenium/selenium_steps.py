@@ -14,7 +14,7 @@ this_experiment = sys.argv[1]
 manifest_loc = sys.argv[2]
 config_loc = sys.argv[3]
 time_bloc =  sys.argv[4]
-ip = "http://127.0.0.1"
+ip = "http://econ-leeps-3.ucsc.edu"
 
 
 
@@ -36,11 +36,11 @@ class local():
     # Performs login for driver
     elem_user = self.driver.find_element_by_name("username")
     elem_user.clear()
-    elem_user.send_keys("root")
+    elem_user.send_keys("admin")
 
     elem_pass = self.driver.find_element_by_name("password")
     elem_pass.clear()
-    elem_pass.send_keys("root")
+    elem_pass.send_keys("Mas7cw*late")
     
     #launch 
     elem_pass.send_keys(Keys.RETURN)
@@ -149,6 +149,7 @@ class local():
     get_string = ip + "/session/"+session_number+"/admin"
     self.driver.get(get_string)
 
+    print(config_loc)
     test = self.driver.find_element_by_tag_name('input')
     test.send_keys(config_loc)
     

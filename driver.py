@@ -6,7 +6,7 @@ import shutil
 
 TOPDIR = os.path.dirname(os.path.realpath(__file__)) + "/"
 MANIFEST = TOPDIR + "data/manifests/CDA_Manifest.json"
-TYPE = "CDA"
+TYPE = "HFT-CDA"
 
 # Driver Phase 1 :
 #	Copy Specified Gherkin text to Gherkin Module
@@ -26,26 +26,26 @@ osStatement = "python createConfig.py"
 os.system(osStatement);
 
 
-# # Driver Phase 4:
-# #       trigger selenium
-# scenarios = next(os.walk('data/scenarios'))[1]
-# for directory in scenarios:
-# 	while True:
-# 		Join = raw_input('Would you like to run a selenium experiment?(y/n)\n')
-# 		if Join == "y" or Join == "yes" or Join == "Y" or Join == "yes":
-# 			break
-# 		elif Join == "n" or Join == "no" or Join == "N" or Join == "no":
-# 			exit()
-# 		else:
-# 			Join = raw_input('Would you like to run a selenium experiment?(y/n)\n')
-# 	osStatement = "selenium/selenium_driver " + TYPE + " " + MANIFEST + " " + TOPDIR + "data/scenarios/" +  directory + " 45"
-# 	# print(osStatement)
-# 	os.system(osStatement);
+# Driver Phase 4:
+#       trigger selenium
+scenarios = next(os.walk('data/scenarios'))[1]
+for directory in scenarios:
+	while True:
+		Join = raw_input('Would you like to run a selenium experiment?(y/n)\n')
+		if Join == "y" or Join == "yes" or Join == "Y" or Join == "yes":
+			break
+		elif Join == "n" or Join == "no" or Join == "N" or Join == "no":
+			exit()
+		else:
+			Join = raw_input('Would you like to run a selenium experiment?(y/n)\n')
+	osStatement = "selenium/selenium_driver " + TYPE + " " + MANIFEST + " " + TOPDIR + "data/scenarios/" +  directory + " 15"
+	# print(osStatement)
+	os.system(osStatement);
 
-# 	# Copy exchange server logs to current directory
-# 	copyStatemnt = "rsync -avz --remove-source-files -e ssh ubuntu@ec2-54-149-235-92.us-west-2.compute.amazonaws.com:/var/HFT2/CDA_DATA/* " + TOPDIR + "data/scenarios/" + directory
-# 	# print(copyStatemnt)
-# 	os.system(copyStatemnt)
+	# Copy exchange server logs to current directory
+	copyStatemnt = "rsync -avz --remove-source-files -e ssh ubuntu@ec2-54-149-235-92.us-west-2.compute.amazonaws.com:/var/HFT2/CDA_DATA/* " + TOPDIR + "data/scenarios/" + directory
+	# print(copyStatemnt)
+	os.system(copyStatemnt)
 
 
 # # Driveer Phase 5:
