@@ -43,13 +43,8 @@ record_time = {}
 # CSV target
 target = open(file, 'w')
 # Scenario prefix
-target_prefix = "/home/dthurau/redwood-test-harness/data/scenarios/"
+target_prefix = "/home/leeps/redwood-test-harness/data/scenarios/"
 
-
-#!--------------------------------------------------------------------->
-# Below this line is production code and does not need further modifications
-# or commenting
-#!--------------------------------------------------------------------->
 
 # Global default table parser
 @given('global default parameters')
@@ -141,10 +136,10 @@ def step_impl(context):
 		# add it subject_list 
 		# !! subject list is the list that contains all users !!
 		subjects_list.append(temp)
-	for i in range(0, subjects_num):
-			target_name = target_prefix + "Scenario" + str(scenario_index) + "/T1_P" + str(i) + "_input.csv"
-			user_target = open(target_name, 'a')
-			user_target.write(str("0" + ",OUT\n"))		
+	# for i in range(0, subjects_num):
+	# 		target_name = target_prefix + "Scenario" + str(scenario_index) + "/T1_P" + str(i) + "_input.csv"
+	# 		user_target = open(target_name, 'a')
+	# 		user_target.write(str("0" + ",OUT\n"))		
 
 # Takes modified attributes of participants
 @given('participant {p} has {key} updated to {value}')
@@ -192,7 +187,6 @@ def step_impl(context, value, time):
 	jump_targ.write("jumpTime,jumpSizes\n")
 	if(time != "-1"):
 	# V0
-		jump_targ.write("0," + global_default_params["V0"] +  "\n")
 		jump_targ.write("0," + global_default_params["V0"] +  "\n")
 		# trigger time
 		jump_targ.write(global_default_params[time] + ',' + value + "\n")

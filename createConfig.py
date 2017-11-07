@@ -3,7 +3,7 @@ import os
 import fnmatch
 
 
-mypath = "/home/dthurau/redwood-test-harness/data/scenarios/"
+mypath = "/home/leeps/redwood-test-harness/data/scenarios/"
 
 def makeConfig(mypath):
 	file = mypath+'/Config.csv' 
@@ -25,7 +25,7 @@ def makeConfig(mypath):
 		target.seek(-1, os.SEEK_END)
 		target.truncate()
 		target.write('\",')
-		target.write('30000,10,54.149.235.92')	
+		target.write('30000,10,54.219.182.118')	
 #	for file in os.listdir(mypath):
 #		if fnmatch.fnmatch(file, '*investors*'):
 #			target.write(mypath + '/' + file + ',')

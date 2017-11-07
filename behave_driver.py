@@ -42,9 +42,13 @@ for diry in mydirs:
 	investLink = uploadToDropbox([diry + 'T1_investors.csv',], folder)
 	jumpLink = uploadToDropbox([diry + 'T1_jump.csv'], folder)
 	inputLinks = []
-	for file in os.listdir(diry):
+
+
+	for file in sorted(os.listdir(diry)):
 		if fnmatch.fnmatch(file, '*_input.csv'):
 			inputLinks.append(uploadToDropbox([diry+file],folder))
+
+	
 	with open(diry + '.configRead', 'w') as f:
 		for link in investLink:
 			f.write("invest>" + link + "\n")
@@ -54,9 +58,3 @@ for diry in mydirs:
 		for link in inputLinks:
 			f.write("input_" + str(count) + ">" + link[0] + "\n")
 			count = count + 1
-	print("INPUTS")
-	print(inputLinks)
-	print("JUMPS")
-	print(jumpLink)
-	print("INVESTS")
-	print(investLink)
