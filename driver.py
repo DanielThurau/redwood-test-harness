@@ -3,10 +3,14 @@ import os
 import sys
 import shutil
 
+MANIFEST_FILE = 'CDA_Manifest.json'
+TYPE = "HFT-CDA"
+
+
 
 TOPDIR = os.path.dirname(os.path.realpath(__file__)) + "/"
-MANIFEST = TOPDIR + "data/manifests/CDA_Manifest.json"
-TYPE = "HFT-CDA"
+MANIFEST = TOPDIR + "data/manifests/" + MANIFEST_FILE
+
 
 # Driver Phase 1 :
 #	Copy Specified Gherkin text to Gherkin Module
